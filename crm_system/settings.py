@@ -75,8 +75,7 @@ WSGI_APPLICATION = 'crm_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mydata',
         'USER': 'root',
         'PASSWORD': 'usbw',
