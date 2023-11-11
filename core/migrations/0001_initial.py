@@ -12,36 +12,36 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='BusinessType',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(blank=True, max_length=255, null=True)),
-                ('description', models.TextField(blank=True, null=True)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Company',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(blank=True, max_length=255, null=True)),
-                ('description', models.TextField(blank=True, null=True)),
-                ('email', models.CharField(blank=True, max_length=255, null=True)),
-                ('cell_phone', models.CharField(blank=True, max_length=255, null=True)),
-                ('land_phone', models.CharField(blank=True, max_length=255, null=True)),
-                ('state', models.CharField(blank=True, max_length=255, null=True)),
-                ('city', models.CharField(blank=True, max_length=255, null=True)),
-                ('zip_code', models.CharField(blank=True, max_length=255, null=True)),
-                ('about', models.TextField(blank=True, null=True)),
-                ('contact_details', models.TextField(blank=True, null=True)),
-                ('latitude', models.CharField(blank=True, max_length=512, null=True)),
-                ('longitude', models.CharField(blank=True, max_length=512, null=True)),
-                ('year_established', models.DateField(blank=True, null=True)),
-                ('total_employees', models.CharField(blank=True, max_length=255, null=True)),
-                ('main_products', models.CharField(blank=True, max_length=255, null=True)),
-                ('url', models.CharField(blank=True, max_length=255, null=True)),
-                ('social_link', models.CharField(blank=True, max_length=255, null=True)),
-                ('business_type', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='CompanyBusinessType', to='core.businesstype')),
-            ],
-        ),
+        # migrations.CreateModel(
+        #     name='BusinessType',
+        #     fields=[
+        #         ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+        #         ('name', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('description', models.TextField(blank=True, null=True)),
+        #     ],
+        # ),
+        # migrations.CreateModel(
+        #     name='Company',
+        #     fields=[
+        #         ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+        #         ('name', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('description', models.TextField(blank=True, null=True)),
+        #         ('email', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('cell_phone', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('land_phone', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('state', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('city', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('zip_code', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('about', models.TextField(blank=True, null=True)),
+        #         ('contact_details', models.TextField(blank=True, null=True)),
+        #         ('latitude', models.CharField(blank=True, max_length=512, null=True)),
+        #         ('longitude', models.CharField(blank=True, max_length=512, null=True)),
+        #         ('year_established', models.DateField(blank=True, null=True)),
+        #         ('total_employees', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('main_products', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('url', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('social_link', models.CharField(blank=True, max_length=255, null=True)),
+        #         ('business_type', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='CompanyBusinessType', to='core.businesstype')),
+        #     ],
+        # ),
     ]

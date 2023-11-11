@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'crm_system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'crmdata',
+        'NAME': 'crm_data',
         'USER': 'root',
         'PASSWORD': 'usbw',
         'HOST': 'localhost',
