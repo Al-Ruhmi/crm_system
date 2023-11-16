@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import BusinessType,Company
+from .models import BusinessType,Company,CustomFieldType,CustomField
 
 
 # Register your models here.
@@ -8,3 +8,5 @@ from .models import BusinessType,Company
 
 admin.site.register(BusinessType)
 admin.site.register(Company)
+admin.site.register(CustomFieldType)
+admin.site.register(CustomField)

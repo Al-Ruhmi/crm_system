@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'accounts',
     'hr',
+    'crm',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'crm_system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'crm_data',
+        'NAME': 'crm_data',  # usb v8.6.6
         'USER': 'root',
         'PASSWORD': 'usbw',
         'HOST': 'localhost',

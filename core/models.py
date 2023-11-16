@@ -87,3 +87,19 @@ class Company(models.Model):
 
     def str(self):
         return self.name
+
+
+
+class CustomFieldType(BaseModel):
+    name =  models.CharField(max_length=255, blank=True, null=True)
+    min_value = models.IntegerField()
+    max_value = models.IntegerField()
+
+
+class CustomField(BaseModel):
+    name =  models.CharField(max_length=255, blank=True, null=True)
+    type = models.ForeignKey(CustomFieldType,null=True, blank=True, on_delete=models.CASCADE)
+    group_name =  models.CharField(max_length=255, blank=True, null=True)
+    name_model =  models.CharField(max_length=255, blank=True, null=True)
+    required = models.BooleanField(default=False)
+    position = models.IntegerField(default=1)
