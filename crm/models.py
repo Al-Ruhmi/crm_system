@@ -89,7 +89,7 @@ class CrmProject(BaseModelWithAuthor):
 # 11
 class Task(BaseModelWithAuthor):
     number = models.IntegerField(null=True , blank=True)
-    owner = models.ForeignKey(CrmMember, null=True, blank=True, on_delete=models.CASCADE)
+
     status = models.ForeignKey(TaskStatus, null=True, blank=True, on_delete=models.CASCADE)
     classification = models.ForeignKey(TaskClassification, null=True, blank=True, on_delete=models.CASCADE)
     active = models.BooleanField(default=True)
@@ -100,6 +100,13 @@ class Task(BaseModelWithAuthor):
     tags = models.TextField(null=True,blank=True)
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    autidors = models.CharField(max_length=512, null=True)
+    start_date_plan = models.DateTimeField(null=True,blank=True)
+    end_date_plan = models.DateTimeField(null=True,blank=True)
+    data = models.TextField(null=True,blank=True)
+    allow_time_tracking = models.BooleanField(default=False)
+    changed_by = models.ForeignKey( CrmMember, null=True, blank=True, on_delete=models.CASCADE)
+    changed_date = models.DateTimeField(null=True,blank=True)
 
 
 # 12
@@ -144,3 +151,19 @@ class TaskWorkLog(BaseModel):
     task = models.ForeignKey(Task, null=True, blank=True, on_delete=models.CASCADE)
     member = models.ForeignKey(CrmMember, null=True, blank=True, on_delete=models.CASCADE)
     time = models.CharField(max_length=255, null=True)
+    comment = models.TextField(null=True,blank=True)
+
+
+# 18
+class TaskColumn(BaseModel):
+    name = models.CharField(max_length=255, null=True)
+    tasks = models.CharField(max_length=512, null=True)
+    color = models.CharField(max_length=255, null=True)
+    position = models.CharField(max_length=255, null=True)
+
+# 19
+class TaskHistory(BaseModel):
+    task = models.CharField(max_length=512, null=True)
+    author = models.ForeignKey(CrmMember, null=True, blank=True, on_delete=models.CASCADE)
+    field = models.CharField(max_length=255, null=True)
+    data = models.TextField(null=True,blank=True)
