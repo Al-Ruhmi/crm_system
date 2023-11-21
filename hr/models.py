@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from commons.utility import upload_file_path, upload_image_path
 
 from core.models import BaseModel, BaseModelWithAuthor, ProfileBaseModel
 from django.contrib.auth import get_user_model
@@ -32,7 +33,7 @@ class Employee(ProfileBaseModel):
     mother_name = models.CharField(max_length=20, null=True)
     department = models.ForeignKey(Department, null=True, blank=True, on_delete=models.CASCADE)
     date_joining = models.DateTimeField( auto_now_add=True,null=True, blank=True) # 
-    picture = models.ImageField(upload_to='hr/static/hr_img/images/',null=True, blank=True)
+    picture = models.ImageField(upload_to=upload_image_path,null=True, blank=True)
     job = models.ForeignKey(EmployeeJob,null=True, blank=True, on_delete=models.CASCADE)
     salary = models.CharField(max_length=20, null=True, blank=True)
     archive = models.BooleanField(default=False)
@@ -42,7 +43,7 @@ class Employee(ProfileBaseModel):
 
 class EmployeeDocument(BaseModel):
     name = models.CharField(max_length=20, null=True ,blank=True)
-    file = models.CharField(max_length=20, null=True, blank=True)
+    file = models.FileField(upload_to=upload_file_path, null=True, blank=True)
     employee = models.ForeignKey(Employee, null=True, blank=True, on_delete=models.CASCADE)
 
 
@@ -74,7 +75,6 @@ class DeductionSalary(models.Model):
 
 
 class VacationType(models.Model):
-    
     name = models.CharField(max_length=20, null=True ,blank=True)
     limit_days = models.IntegerField(null=True , blank=True)
 

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'hr',
     'crm',
+    'commons',
 ]
 
 MIDDLEWARE = [

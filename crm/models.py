@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from commons.utility import upload_file_path, upload_image_path
 from hr.models import Employee
 
 from core.models import AddressBaseModel, BaseModel, BaseModelWithAuthor, BusinessType, Company, ProfileBaseModel
@@ -80,7 +81,7 @@ class CrmProject(BaseModelWithAuthor):
     owner = models.ForeignKey(CrmMember, null=True, blank=True, on_delete=models.CASCADE)
     description = models.TextField(null=True,blank=True)
     due_date = models.DateField(null=True, blank=True) # 
-    icon = models.ImageField(upload_to='crm/static/crm_img/images/',null=True, blank=True)
+    icon = models.ImageField(upload_to=upload_image_path,null=True, blank=True)
     color = models.CharField(max_length=255, null=True, blank=True)
     for_employee = models.BooleanField()
     for_customer = models.BooleanField()
@@ -112,7 +113,7 @@ class Task(BaseModelWithAuthor):
 # 12
 class TaskDocument(BaseModel):
     name = models.CharField(max_length=255, null=True)
-    file = models.CharField(max_length=255, null=True)
+    file = models.FileField(upload_to=upload_file_path, null=True, blank=True)
     task = models.ForeignKey(Task, null=True, blank=True, on_delete=models.CASCADE)
 
 # 13
@@ -127,7 +128,7 @@ class TaskActivity(BaseModel):
 # 14
 class TaskActivityDocument(BaseModel):
     name = models.CharField(max_length=255, null=True)
-    file = models.CharField(max_length=255, null=True)
+    file = models.FileField(upload_to=upload_file_path, null=True, blank=True)
     activity = models.ForeignKey(TaskActivity, null=True, blank=True, on_delete=models.CASCADE)
 
 
@@ -143,7 +144,7 @@ class TaskComment(BaseModel):
     task = models.ForeignKey(Task, null=True, blank=True, on_delete=models.CASCADE)
     member = models.ForeignKey(CrmMember, null=True, blank=True, on_delete=models.CASCADE)
     text = models.TextField(null=True,blank=True)
-    file = models.CharField(max_length=255, null=True)
+    file = models.FileField(upload_to=upload_file_path, null=True, blank=True)
     edited = models.BooleanField(default=False)
 
 # 17

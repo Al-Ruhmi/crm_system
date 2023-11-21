@@ -103,3 +103,24 @@ class CustomField(BaseModel):
     name_model =  models.CharField(max_length=255, blank=True, null=True)
     required = models.BooleanField(default=False)
     position = models.IntegerField(default=1)
+
+
+class AddOn(BaseModel):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    name_en = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    rate = models.IntegerField(null=True , blank=True)
+    path = models.CharField(max_length=255, blank=True, null=True)
+    url = models.CharField(max_length=255, blank=True, null=True)
+    version = models.CharField(max_length=255, blank=True, null=True)
+    installed = models.BooleanField(default=False)
+    active = models.BooleanField(default=False)
+
+
+class AddOnConfig(BaseModel):
+    addon = models.ForeignKey(AddOn, blank=True, null=True,on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, blank=True, null=True)
+    config_type = models.CharField(max_length=255, blank=True, null=True)
+    default_value = models.CharField(max_length=255, blank=True, null=True)
+    value = models.TextField(blank=True, null=True)
+    active = models.BooleanField(default=True)
