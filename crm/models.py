@@ -168,3 +168,34 @@ class TaskHistory(BaseModel):
     author = models.ForeignKey(CrmMember, null=True, blank=True, on_delete=models.CASCADE)
     field = models.CharField(max_length=255, null=True)
     data = models.TextField(null=True,blank=True)
+
+    
+# 20
+class ClientActivityType(BaseModel):
+    name = models.CharField(max_length=512, null=True)
+    code = models.CharField(max_length=255, null=True)
+    description = models.TextField(null=True,blank=True)
+
+# 21
+class ClientActivity(BaseModel):
+    client = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=512, null=True)
+    action_type = models.ForeignKey(ClientActivityType, null=True, blank=True, on_delete=models.CASCADE)
+    description = models.TextField(null=True,blank=True)
+    ref_number = models.IntegerField(null=True , blank=True)
+    ref_date = models.DateTimeField(null=True,blank=True)
+    data_action = models.TextField(null=True,blank=True)
+
+
+# 22
+class ClientActivityAttribute(BaseModel):
+    client_activity = models.ForeignKey(ClientActivity, null=True, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=512, null=True)
+    value = models.CharField(max_length=255, null=True)
+
+
+# 23
+class ClientActivityDocument(BaseModel):
+    client_activity = models.ForeignKey(ClientActivity, null=True, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=512, null=True)
+    file = models.FileField(upload_to=upload_file_path, null=True, blank=True)

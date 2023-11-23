@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Customer,CustomerAddress,CustomerCustomField,CustomerContract,CrmTeam,CrmMember,TaskStatus,TaskClassification,TaskCustomField,CrmProject,Task,TaskDocument,TaskActivity,TaskActivityDocument,TaskResponsible,TaskComment,TaskWorkLog,TaskColumn,TaskHistory
+from .models import  Customer,CustomerAddress,CustomerCustomField,CustomerContract,CrmTeam,CrmMember,TaskStatus,TaskClassification,TaskCustomField,CrmProject,Task,TaskDocument,TaskActivity,TaskActivityDocument,TaskResponsible,TaskComment,TaskWorkLog,TaskColumn,TaskHistory,ClientActivityType,ClientActivity,ClientActivityAttribute,ClientActivityDocument
 # Register your models here.
 
 
@@ -26,3 +26,8 @@ admin.site.register(TaskComment)
 admin.site.register(TaskWorkLog)
 admin.site.register(TaskColumn)
 admin.site.register(TaskHistory)
+
+admin.site.register(ClientActivityType)
+admin.site.register(ClientActivity)
+admin.site.register(ClientActivityAttribute)
+admin.site.register(ClientActivityDocument)
