@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'hr',
     'crm',
     'commons',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
