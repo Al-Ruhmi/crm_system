@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'crm',
     'commons',
     'dashboard',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
