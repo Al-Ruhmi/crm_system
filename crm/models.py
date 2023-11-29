@@ -10,11 +10,20 @@ from django.core.validators import MinValueValidator,MaxValueValidator
 
 User = get_user_model()
 
+class CustomerManager(models.Manager):
+    def filter_by_name(self, name):
+        return self.filter(name__icontains=name)
+    def filter_by_basic(self, active):
+        return self.filter(active=active)
+    
 # 1
 class Customer(ProfileBaseModel):
     company = models.ForeignKey(Company, null=True, blank=True, on_delete=models.CASCADE)
     business_type = models.ForeignKey(BusinessType, null=True, blank=True, on_delete=models.CASCADE)
     active = models.BooleanField(default=True)
+
+    objects = CustomerManager()
+
 
 # 2
 class CustomerAddress(AddressBaseModel):
@@ -39,17 +48,27 @@ class CustomerContract(BaseModelWithAuthor):
     data = models.TextField(null=True,blank=True)
     active = models.BooleanField(default=True)
 
+
+class CrmTeamManager(models.Manager):
+    def filter_by_name(self, name):
+        return self.filter(name__icontains=name)
 # 5
 class CrmTeam(BaseModel):
     name = models.CharField(max_length=255, null=True)
     group_team = models.CharField(max_length=255, null=True)
     lead = models.ForeignKey(Employee, null=True, blank=True, on_delete=models.CASCADE)
 
+    objects = CrmTeamManager()
+
 # 6
 class CrmMember(BaseModel):
     employee = models.ForeignKey(Employee, null=True, blank=True, on_delete=models.CASCADE)
     team = models.ForeignKey(CrmTeam, null=True, blank=True, on_delete=models.CASCADE)
 
+
+class TaskStatusManager(models.Manager):
+    def filter_by_name(self, name):
+        return self.filter(name__icontains=name)
 # 7
 class TaskStatus(BaseModel):
     name = models.CharField(max_length=255, null=True)
@@ -57,6 +76,8 @@ class TaskStatus(BaseModel):
     postition = models.IntegerField(null=True , blank=True)
 
     priority = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+
+    objects = TaskStatusManager()
 
 # 8
 class TaskClassification(BaseModel):
@@ -73,7 +94,9 @@ class TaskCustomField(BaseModel):
 
 
 
-
+class CrmProjectManager(models.Manager):
+    def filter_by_name(self, name):
+        return self.filter(name__icontains=name)
 # 10
 class CrmProject(BaseModelWithAuthor):
     name = models.CharField(max_length=255, null=True)
@@ -86,6 +109,8 @@ class CrmProject(BaseModelWithAuthor):
     for_employee = models.BooleanField()
     for_customer = models.BooleanField()
     active = models.BooleanField(default=True)
+
+    objects = CrmProjectManager()
 
 # 11
 class Task(BaseModelWithAuthor):

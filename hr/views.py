@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from hr.models import Currency, DeductionSalary, DeductionType, Department, Employee, EmployeeDocument,EmployeeJob, EmployeeSalary, VacationRecord, VacationType, WorkingTime
-from rest_framework import viewsets , generics
+from rest_framework import viewsets 
 from . import serializer
 # Create your views here.
 
@@ -77,9 +77,3 @@ class EmployeeFilterViewset(viewsets.ModelViewSet):
     queryset = Employee.objects.filter_by_name('d')
     serializer_class = serializer.EmployeeSerializer
 
-
-class EmpFilter(generics.ListAPIView):
-    queryset = Employee.objects.all()
-    serializer_class = serializer.EmployeeSerializer
-    def get_queryset(self):
-        return Employee.objects.filter_by_name('l')

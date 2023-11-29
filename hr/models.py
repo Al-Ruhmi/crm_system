@@ -14,7 +14,6 @@ class EmployeeJobManager(models.Manager):
     
 # 1
 class EmployeeJob(BaseModel):
-    # number = models.IntegerField(null=True,blank=True)
     name = models.CharField(max_length=20, null=True)
     note = models.TextField()
 

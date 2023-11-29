@@ -1,4 +1,4 @@
-from hr.views import CurrencyViewset, DeductionSalaryViewset, DeductionTypeViewset, DepartmentFilterViewset, DepartmentViewset, EmpFilter, EmployeeDocumentViewset, EmployeeJobFilterViewset, EmployeeJobViewset, EmployeeSalaryViewset, EmployeeViewset,EmployeeFilterViewset, VacationRecordViewset, VacationTypeViewset, WorkingTimeViewset
+from hr.views import CurrencyViewset, DeductionSalaryViewset, DeductionTypeViewset, DepartmentFilterViewset, DepartmentViewset, EmployeeDocumentViewset, EmployeeJobFilterViewset, EmployeeJobViewset, EmployeeSalaryViewset, EmployeeViewset,EmployeeFilterViewset, VacationRecordViewset, VacationTypeViewset, WorkingTimeViewset
 from rest_framework import routers
 
 router = routers.DefaultRouter()

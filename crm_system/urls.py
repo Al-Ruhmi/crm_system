@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from crm.router_crm import router_crm
 from hr.router import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('hr.urls')),
+    # path('', include('hr.urls')),
     path('api/', include(router.urls)),
+    path('apicrm/', include(router_crm.urls)),
 ]
