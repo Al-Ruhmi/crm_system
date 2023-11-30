@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from crm.router_crm import router_crm
 from hr.router import router
+from dashboard.router_dashboard import router_dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('hr.urls')),
-    path('api/', include(router.urls)),
-    path('apicrm/', include(router_crm.urls)),
+    path('api/hr/', include(router.urls)),
+    path('api/crm/', include(router_crm.urls)),
+    path('api/dashboard/', include(router_dashboard.urls)),
 ]
