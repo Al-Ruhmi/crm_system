@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'commons',
     'dashboard',
     'rest_framework',
+    'banking',
 ]
 
 MIDDLEWARE = [

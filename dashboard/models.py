@@ -3,7 +3,10 @@ from django.db import models
 
 from core.models import AddOn, BaseModel, BaseModelWithAuthor, CustomFieldType
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth import get_user_model
+
 # Create your models here.
+User = get_user_model()
 
 # 1.1
 class MenuGroupManager(models.Manager):
