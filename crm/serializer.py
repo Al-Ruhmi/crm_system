@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ClientActivity, ClientActivityAttribute, ClientActivityDocument, ClientActivityType,TaskStatus, Customer,CrmTeam, Task, TaskActivity, TaskActivityDocument, TaskClassification, TaskColumn, TaskComment, TaskCustomField, TaskDocument, TaskHistory, TaskResponsible,TaskStatus,CrmProject,CustomerAddress,CustomerCustomField,CustomerContract,CrmMember, TaskWorkLog
+from .models import ClientActivity, ClientActivityAttribute, ClientActivityDocument, ClientActivityType, CostCenter,TaskStatus, Customer,CrmTeam, Task, TaskActivity, TaskActivityDocument, TaskClassification, TaskColumn, TaskComment, TaskCustomField, TaskDocument, TaskHistory, TaskResponsible,TaskStatus,CrmProject,CustomerAddress,CustomerCustomField,CustomerContract,CrmMember, TaskWorkLog
 
 # 1
 class CustomerSerializer(serializers.ModelSerializer):
@@ -137,4 +137,10 @@ class ClientActivityAttributeSerializer(serializers.ModelSerializer):
 class ClientActivityDocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClientActivityDocument
+        fields = '__all__'
+
+# 24
+class CostCenterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CostCenter
         fields = '__all__'

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ClientActivity, ClientActivityAttribute, ClientActivityDocument, ClientActivityType,TaskStatus, Customer,CrmTeam, Task, TaskActivity, TaskActivityDocument, TaskClassification, TaskColumn, TaskComment, TaskCustomField, TaskDocument, TaskHistory, TaskResponsible,TaskStatus,CrmProject,CustomerAddress,CustomerCustomField,CustomerContract,CrmMember, TaskWorkLog
+from .models import ClientActivity, ClientActivityAttribute, ClientActivityDocument, ClientActivityType, CostCenter,TaskStatus, Customer,CrmTeam, Task, TaskActivity, TaskActivityDocument, TaskClassification, TaskColumn, TaskComment, TaskCustomField, TaskDocument, TaskHistory, TaskResponsible,TaskStatus,CrmProject,CustomerAddress,CustomerCustomField,CustomerContract,CrmMember, TaskWorkLog
 from rest_framework import viewsets 
 from . import serializer
 
@@ -25,6 +25,11 @@ class TaskStatusFilterViewset(viewsets.ModelViewSet):
 class CrmProjectFilterViewset(viewsets.ModelViewSet):
     queryset = CrmProject.objects.filter_by_name('d')
     serializer_class = serializer.CrmProjectSerializer
+
+# 5
+class CostCenterFilterViewset(viewsets.ModelViewSet):
+    queryset = CostCenter.objects.filter_by_name('d')
+    serializer_class = serializer.CostCenterSerializer
 
 # ------------------------- Models Views API
 # 1
@@ -141,3 +146,8 @@ class ClientActivityAttributeViewset(viewsets.ModelViewSet):
 class ClientActivityDocumentViewset(viewsets.ModelViewSet):
     queryset = ClientActivityDocument.objects.all()
     serializer_class = serializer.ClientActivityDocumentSerializer
+
+# 24
+class CostCenterViewset(viewsets.ModelViewSet):
+    queryset = CostCenter.objects.all()
+    serializer_class = serializer.CostCenterSerializer

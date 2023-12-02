@@ -224,3 +224,18 @@ class ClientActivityDocument(BaseModel):
     client_activity = models.ForeignKey(ClientActivity, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=512, null=True)
     file = models.FileField(upload_to=upload_file_path, null=True, blank=True)
+
+class CostCenterManager(models.Manager):
+    def filter_by_name(self, name):
+        return self.filter(name__icontains=name)
+# 24
+class CostCenter(BaseModelWithAuthor):
+    code = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True)
+    name_en = models.CharField(max_length=255, null=True)
+    main = models.BooleanField(default=True)
+    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL)
+    note = models.TextField(null=True,blank=True)
+    active = models.BooleanField(default=True)
+
+    objects = CostCenterManager()

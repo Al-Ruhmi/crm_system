@@ -1,4 +1,4 @@
-from crm.views import ClientActivityAttributeViewset, ClientActivityDocumentViewset, ClientActivityTypeViewset, ClientActivityViewset, CrmMemberViewset, CrmProjectViewset, CrmTeamFilterViewset, CrmTeamViewset, CustomerAddressViewset, CustomerContractViewset, CustomerCustomFieldViewset, CustomerFilterViewset, CustomerViewset, TaskActivityDocumentViewset, TaskActivityViewset, TaskClassificationViewset, TaskColumnViewset, TaskCommentViewset, TaskCustomFieldViewset, TaskDocumentViewset, TaskHistoryViewset, TaskResponsibleViewset, TaskStatusFilterViewset,CrmProjectFilterViewset, TaskStatusViewset, TaskViewset, TaskWorkLogViewset
+from crm.views import ClientActivityAttributeViewset, ClientActivityDocumentViewset, ClientActivityTypeViewset, ClientActivityViewset, CostCenterFilterViewset, CostCenterViewset, CrmMemberViewset, CrmProjectViewset, CrmTeamFilterViewset, CrmTeamViewset, CustomerAddressViewset, CustomerContractViewset, CustomerCustomFieldViewset, CustomerFilterViewset, CustomerViewset, TaskActivityDocumentViewset, TaskActivityViewset, TaskClassificationViewset, TaskColumnViewset, TaskCommentViewset, TaskCustomFieldViewset, TaskDocumentViewset, TaskHistoryViewset, TaskResponsibleViewset, TaskStatusFilterViewset,CrmProjectFilterViewset, TaskStatusViewset, TaskViewset, TaskWorkLogViewset
 from rest_framework import routers
 
 router_crm = routers.DefaultRouter()
@@ -11,6 +11,8 @@ router_crm.register('crmteamfilter', CrmTeamFilterViewset)
 router_crm.register('taskstatusfilter', TaskStatusFilterViewset)
 # 4
 router_crm.register('crmprojectfilter', CrmProjectFilterViewset)
+# 5
+router_crm.register('costcenterfilter', CostCenterFilterViewset)
 
 # --------------- # ------------------------- Models Views API Routers
 
@@ -60,4 +62,6 @@ router_crm.register('clientactivity', ClientActivityViewset)
 router_crm.register('clientactivityattribute', ClientActivityAttributeViewset)
 # 23
 router_crm.register('clientactivitydocument', ClientActivityDocumentViewset)
+# 23
+router_crm.register('costcenter', CostCenterViewset)
 
