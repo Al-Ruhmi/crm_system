@@ -11,8 +11,6 @@ from django.core.validators import MinValueValidator,MaxValueValidator
 User = get_user_model()
 
 class CustomerManager(models.Manager):
-    def filter_by_name(self, name):
-        return self.filter(name__icontains=name)
     def filter_by_basic(self, active):
         return self.filter(active=active)
     

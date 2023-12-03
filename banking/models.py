@@ -11,7 +11,11 @@ from hr.models import Employee
 
 User = get_user_model()
 
-# 1
+class CurrencyManager(models.Manager):
+    def filter_by_name(self, name):
+        return self.filter(name__icontains=name)
+    
+# 1 --------------
 class Currency(BaseModel):
     name = models.CharField(max_length=255, null=True, blank=True)
     name_en = models.CharField(max_length=255, null=True, blank=True)
@@ -24,6 +28,8 @@ class Currency(BaseModel):
     note = models.TextField(null=True,blank=True)
     active = models.BooleanField(default=True)
 
+    objects = CurrencyManager()
+
 # 2
 class ExchangeCurrency(BaseModelWithAuthor):
     start_date = models.DateTimeField(null=True,blank=True)
@@ -32,7 +38,11 @@ class ExchangeCurrency(BaseModelWithAuthor):
     to_currency = models.ForeignKey(Currency, related_name='%(class)s_tocurrency', null=True, blank=True, on_delete=models.CASCADE)
     rate = models.DecimalField(decimal_places=3, max_digits=8)
 
-# 3
+
+class BankManager(models.Manager):
+    def filter_by_name(self, name):
+        return self.filter(name__icontains=name)
+# 3 ------------
 class Bank(BaseModel):
     class BankType(models.TextChoices):
         
@@ -48,6 +58,8 @@ class Bank(BaseModel):
     email = models.EmailField(max_length=255,null=True, blank=True)
     website = models.CharField(max_length=255, null=True ,blank=True)
     logo = models.ImageField(upload_to=upload_image_path,null=True, blank=True)
+
+    objects = BankManager()
 
 # 4
 
@@ -76,7 +88,10 @@ class CompanyBankAccount(BankAccount):
 class CustomerBankAccount(BankAccount):
     customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.CASCADE)
 
-# 7
+class EWalletManager(models.Manager):
+    def filter_by_name(self, name):
+        return self.filter(name__icontains=name)
+# 7 -----------
 class EWallet(BaseModel):
     name = models.CharField(max_length=255, null=True, blank=True)
     name_en = models.CharField(max_length=255, null=True, blank=True)
@@ -85,6 +100,8 @@ class EWallet(BaseModel):
     website = models.CharField(max_length=255, null=True ,blank=True)
     logo = models.ImageField(upload_to=upload_image_path,null=True, blank=True)
     active = models.BooleanField(default=True)
+
+    objects = EWalletManager()
 
 # 8
 class EWalletAccount(BaseModel):
@@ -104,11 +121,14 @@ class CompanyEWalletAccount(EWalletAccount):
     user_name = models.CharField(max_length=255, null=True, blank=True)
     passsword = models.CharField(max_length=255, null=True, blank=True)
 
-# 10
+# 10 
 class CustomerEWalletAccount(EWalletAccount):
     customer = models.ForeignKey(Customer, null=True, blank=True, on_delete=models.CASCADE)
 
-# 11
+class ExchangerBrokerManager(models.Manager):
+    def filter_by_name(self, name):
+        return self.filter(name__icontains=name)
+# 11 ----------
 class ExchangerBroker(BaseModel):
     name = models.CharField(max_length=255, null=True, blank=True)
     name_en = models.CharField(max_length=255, null=True, blank=True)
@@ -117,6 +137,8 @@ class ExchangerBroker(BaseModel):
     website = models.CharField(max_length=255, null=True ,blank=True)
     logo = models.ImageField(upload_to=upload_image_path,null=True, blank=True)
     active = models.BooleanField(default=True)
+
+    objects = ExchangerBrokerManager()
 
 #12
 class ExchangerBrokerAccount(BaseModel):

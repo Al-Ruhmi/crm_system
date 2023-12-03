@@ -19,10 +19,12 @@ from django.urls import path, include
 from crm.router_crm import router_crm
 from hr.router import router
 from dashboard.router_dashboard import router_dashboard
+from banking.router_banking import router_banking
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/hr/', include(router.urls)),
     path('api/crm/', include(router_crm.urls)),
     path('api/dashboard/', include(router_dashboard.urls)),
+    path('api/banking/', include(router_banking.urls)),
 ]
